@@ -1,0 +1,47 @@
+
+					    File fileToSave = fileChooser.getSelectedFile();
+					   // System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+					    
+					    String path=fileToSave.getAbsolutePath();
+					  
+					    FileInputStream inputstream=new FileInputStream(path);
+					    XSSFWorkbook workbook=new XSSFWorkbook(inputstream);
+					    XSSFSheet sheet=workbook.getSheetAt(0);
+					    
+					    int rows=sheet.getLastRowNum();
+					    int cols=sheet.getRow(1).getLastCellNum()+1;
+
+				    
+					    for(int r=6;r<=rows;r++) {
+					    	
+					    	XSSFRow row=sheet.getRow(r);
+					    	
+					    	for(int c=1;c<=cols;c++) {
+					    		
+					    		
+					    		
+					    		XSSFCell cell=row.getCell(c);
+					    		
+					    		switch(cell.getCellType() ) {
+					    		
+					    		case STRING: System.out.print(" "+cell.getStringCellValue()); break;
+					    		case NUMERIC: System.out.print(" "+cell.getNumericCellValue()); break;
+					    		case BOOLEAN: System.out.print(" "+cell.getBooleanCellValue()); break;
+					    		case BLANK: System.out.print(" "+cell.getBooleanCellValue()); break;
+					    		
+					    		}
+					    		
+					    		
+					    		
+					    		
+					    		
+					    		
+					    		
+					    	}
+					    	System.out.println("|");
+					    	
+					    }
+					    
+					   
+					    
+					  
